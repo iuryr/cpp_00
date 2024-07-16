@@ -3,4 +3,6 @@
 
 #include <iostream> //cin, cout
 
+#include "PhoneBook.hpp"
+
 #endif //CONTACT_KEEPER_H

@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	PhoneBook	phone_book;
 	std::string input;
 
 	while (42)
@@ -10,7 +11,11 @@ int main(void)
 		std::cout << ">> ";
 		std::getline(std::cin, input);
 
-		if (input.compare("ADD") == 0 || input.compare("SEARCH") == 0)
+		if (input.compare("ADD") == 0)
+		{
+			phone_book.add();
+		}
+		else if(input.compare("SEARCH") == 0)
 		{
 			std::cout << input << std::endl;
 		}

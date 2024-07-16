@@ -6,7 +6,9 @@ DEBUG_FLAGS = -g3
 
 SRC_DIR = src/
 SRC_FILES = $(addprefix $(SRC_DIR), \
-	  contact_keeper.cpp)
+	  contact_keeper.cpp \
+	  PhoneBook.cpp \
+	  Contact.cpp)
 
 OBJ_DIR = obj/
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(notdir $(SRC_FILES:.cpp=.o)))
@@ -41,5 +43,7 @@ debug: fclean
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) -I $(INC_DIR) $(SRC_FILES) -o $(NAME)
 	gdb ./$(NAME)
 
+val: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .PHONY : all clean fclean re
