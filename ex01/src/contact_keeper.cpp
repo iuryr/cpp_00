@@ -17,7 +17,7 @@ int main(void)
 		}
 		else if(input.compare("SEARCH") == 0)
 		{
-			std::cout << input << std::endl;
+			phone_book.search();
 		}
 		else if (input.compare("EXIT") == 0)
 		{

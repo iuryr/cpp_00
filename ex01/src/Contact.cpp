@@ -114,3 +114,54 @@ void	Contact::_set_darkest_secret(void)
 		}
 	}
 }
+
+bool	Contact::is_set(void)
+{
+	if (this->_first_name.empty() == true)
+		return false;
+	else
+		return true;
+}
+
+std::string	Contact::get_trunc_element(std::string element)
+{
+	std::string	output;
+
+	if (element.compare("first_name") == 0)
+	{
+		output = this->_first_name.substr(0, 10);
+		if (this->_first_name.length() > 10)
+		{
+			output.replace(9, 1, ".");
+		}
+		return output;
+	}
+	else if (element.compare("last_name") == 0)
+	{
+		output = this->_last_name.substr(0, 10);
+		if (this->_last_name.length() > 10)
+		{
+			output.replace(9, 1, ".");
+		}
+		return output;
+	}
+	else if (element.compare("nickname") == 0)
+	{
+		output = this->_nickname.substr(0, 10);
+		if (this->_nickname.length() > 10)
+		{
+			output.replace(9, 1, ".");
+		}
+		return output;
+	}
+	return NULL;
+}
+
+void	Contact::print(void)
+{
+	std::cout << "First Name: " + this->_first_name << std::endl;
+	std::cout << "Last Name: " + this->_last_name << std::endl;
+	std::cout << "Nickname: " + this->_nickname << std::endl;
+	std::cout << "Phone Number: " + this->_phone_number << std::endl;
+	std::cout << "Darkest Secret: " + this->_darkest_secret << std::endl << std::endl;
+}
