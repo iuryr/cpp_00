@@ -38,12 +38,12 @@ void	Account::_displayTimestamp(void)
 {
 	std::time_t		timer;
 	struct std::tm*	time_info;
-	char buffer[18];
+	char buffer[19];
 
 	std::time(&timer);
 	time_info = std::localtime(&timer);
-	std::strftime(buffer, 18, "[%Y%m%d_%H%M%S]", time_info);
-	buffer[17] = '\0';
+	std::strftime(buffer, 19, "[%Y%m%d_%H%M%S] ", time_info);
+	buffer[18] = '\0';
 	std::cout << buffer;
 }
 
@@ -98,3 +98,37 @@ void	Account::makeDeposit(int deposit)
 	std::cout << ";amount:" << this->_amount;
 	std::cout << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
+
+bool	Account::makeWithdrawal(int withdrawal)
+{
+	if (checkAmount() < withdrawal)
+	{
+		Account::_displayTimestamp();
+		std::cout << "index:" << this->_accountIndex;
+		std::cout << ";p_amount:" << this->_amount;
+		std::cout << ";withdrawal:refused" << std::endl;
+		return false;
+	}
+	else
+	{
+		Account::_displayTimestamp();
+		std::cout << "index:" << this->_accountIndex;
+		std::cout << ";p_amount:" << this->_amount;
+		std::cout << ";withdrawal:" << withdrawal;
+		this->_amount -= withdrawal;
+		Account::_totalAmount -= withdrawal;
+		std::cout << ";amount:" << this->_amount;
+		this->_nbWithdrawals ++;
+		Account::_totalNbWithdrawals++;
+		std::cout << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+		return true;
+	}
+
+}
+
+int		Account::checkAmount(void) const
+{
+	return this->_amount;
+}
+
+
