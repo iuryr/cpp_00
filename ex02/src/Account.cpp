@@ -46,3 +46,32 @@ void	Account::_displayTimestamp(void)
 	buffer[17] = '\0';
 	std::cout << buffer;
 }
+
+int		Account::getNbAccounts(void)
+{
+	return Account::_nbAccounts;
+}
+
+int		Account::getTotalAmount(void)
+{
+	return Account::_totalAmount;
+}
+
+int		Account::getNbDeposits(void)
+{
+	return Account::_totalNbDeposits;
+}
+
+int		Account::getNbWithdrawals(void)
+{
+	return Account::_totalNbWithdrawals;
+}
+
+void Account::displayAccountsInfos(void)
+{
+	Account::_displayTimestamp();
+	std::cout << "accounts:" << Account::getNbAccounts();
+	std::cout << ";total:" << Account::getTotalAmount();
+	std::cout << ";deposits:" << Account::getNbDeposits();
+	std::cout << ";withdrawals:" << Account::getNbWithdrawals() << std::endl;
+}
