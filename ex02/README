@@ -1,0 +1,4 @@
+To test the exercise run the following command:
+
+./testes > new_log
+diff -s <(awk {'print $2'} src/19920104_091532.log) <(awk {'print $2'} new_log)
